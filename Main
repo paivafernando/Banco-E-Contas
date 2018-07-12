@@ -1,0 +1,50 @@
+
+public class Conta {
+	
+	String nomeTitular;
+	int numeroConta;
+	int codigoAgencia;
+	double saldo;
+	Data dataDeAbertura;
+	
+	
+	boolean saca(int valor) {
+	//retira valor do saldo	
+	   if(this.saldo < valor) {
+		   System.out.println("Saldo insuficiente");
+		   return false;
+	   }else {
+		   this.saldo -= valor;
+		   System.out.println("Saque de R$ " +valor+" efetuado");
+		   return true;
+	   }
+	}
+	
+	void deposita(int valor) {
+	//adiciona valor ao saldo
+		this.saldo += valor;
+		System.out.println("Deposito efetuado");
+	}
+	
+	double calculaRendimento() {
+		//devolve rendimento mensal da conta
+			double saldoFuturo = this.saldo + (this.saldo * 0.1);
+			return saldoFuturo;
+	}
+	
+	String recuperaDadosParaImpressao() {
+		String dados = "Titular: "+this.nomeTitular;
+		dados += "\nAgência: "+this.codigoAgencia;
+		dados += "\nConta: "+this.numeroConta;
+		dados += "\nData de Abertura de Conta: "+this.dataDeAbertura.dia+"/"+this.dataDeAbertura.mes+"/"+this.dataDeAbertura.ano;
+		dados += "\nSaldo Conta: R$ "+this.saldo;
+		dados += "\nRendimento ao final do mês: R$ "+this.calculaRendimento();
+	  return dados;
+	}
+	
+	
+	
+	
+	
+	
+}
