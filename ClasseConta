@@ -1,0 +1,60 @@
+
+import java.awt.Component;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class Main {
+	
+	public static void main(String[] args) {
+		
+		
+	
+		JPanel painel = new JPanel();
+		JTextField inputTitular = new JTextField(10);
+		JFrame janela = new JFrame("Cadastro de Novo Cliente");
+		JButton botao = new JButton();
+		   
+		janela.add(painel);
+		janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		janela.pack();
+		janela.setVisible(true);
+		janela.setSize(540, 540);
+		
+		
+		painel.add(inputTitular);
+		painel.add(botao);
+		  
+		   
+		
+		Conta minhaConta = new Conta();
+		minhaConta.nomeTitular = inputTitular.getText();
+		minhaConta.codigoAgencia = 568;
+		minhaConta.numeroConta = 9875;
+		minhaConta.saldo = 9858.56;
+		Data data = new Data();
+		minhaConta.dataDeAbertura = data;
+		minhaConta.dataDeAbertura.dia = 5;
+		minhaConta.dataDeAbertura.mes = 6;
+		minhaConta.dataDeAbertura.ano = 2015;
+
+
+		
+
+	
+		
+		//minhaConta.saca(10);
+		//minhaConta.deposita(1000);
+		//minhaConta.calculaRendimento();
+		System.out.println(minhaConta.recuperaDadosParaImpressao());
+		
+				
+		
+		
+		
+		
+	}
+
+}
