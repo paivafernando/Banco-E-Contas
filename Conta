@@ -1,0 +1,72 @@
+public class Conta {
+	
+	private String nomeTitular;
+	int numeroConta;
+	int codigoAgencia;
+	private double saldo;
+	Data dataDeAbertura;
+	private double saldoRendimento;
+	private static int totalDeContas;
+	
+	
+	
+	Conta(String nomeTitular){
+		this.nomeTitular = nomeTitular;
+		Conta.totalDeContas = Conta.totalDeContas + 1;
+		
+	}
+	
+	Conta(int numeroConta, String nomeTitular){
+		this(nomeTitular);
+		this.numeroConta = numeroConta;
+	}
+	
+	
+	public void saca(int valor) {
+	//retira valor do saldo	
+	
+		if(this.saldo > valor) {
+			 this.saldo -= valor;
+			 System.out.println("Saque de R$ " +valor+" efetuado");
+		}else {	  
+			throw new IllegalArgumentException("estourou limite!");
+		}   
+	}
+	
+	public double getSaldo() {
+		return this.saldo;
+	}
+	
+	void deposita(int valor) {
+	//adiciona valor ao saldo
+		this.saldo += valor;
+		System.out.println("Deposito efetuado");
+	}
+	
+	private double calculaRendimento() {
+		//devolve rendimento mensal da conta
+			saldoRendimento = this.saldo + (this.saldo * 0.1);
+			return saldoRendimento;
+	}
+	
+	private String recuperaDadosParaImpressao() {
+		String dados = "Titular: "+this.nomeTitular;
+		dados += "\nAgência: "+this.codigoAgencia;
+		dados += "\nConta: "+this.numeroConta;
+		dados += "\nData de Abertura de Conta: "+this.dataDeAbertura.dia+"/"+this.dataDeAbertura.mes+"/"+this.dataDeAbertura.ano;
+		dados += "\nSaldo Conta: R$ "+this.saldo;
+		dados += "\nRendimento ao final do mês: R$ "+this.calculaRendimento();
+	  return dados;
+	}
+	
+	public String getRecuperaDadosParaImpressao()
+	{
+		return this.recuperaDadosParaImpressao();
+	}
+	
+	public int getTotalDeContas() {
+        return Conta.totalDeContas;
+    }
+	
+	
+}
